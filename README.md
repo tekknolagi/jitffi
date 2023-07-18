@@ -1,5 +1,17 @@
 # A silly little FFI "JIT"
 
+Imagine calling the C function `add_one` from Python.
+
+```c
+// test.c
+extern int add_one(int i) {
+    return i+1;
+}
+```
+
+Normal `ctypes` "interprets" the FFI. Instead, generate code to call it.
+
+
 ```
 $ make
 int add_one_wrapper(PyObject* arg0) {
