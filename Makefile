@@ -6,4 +6,7 @@ testlib.so: test.c
 test: main.py testlib.so
 	@python3 main.py
 
-.PHONY: all test
+clean:
+	rm -f testlib.so
+
+.PHONY: all test clean
