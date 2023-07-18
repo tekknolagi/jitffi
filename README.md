@@ -14,7 +14,9 @@ Normal `ctypes` "interprets" the FFI. Instead, generate code to call it.
 
 ```
 $ make
-int add_one_wrapper(PyObject* arg0) {
+cc  -shared -o testlib.so -fPIC test.c
+python3 main.py
+PyObject* add_one_wrapper(PyObject* arg0) {
   int v0 = PyLong_AsLong(arg0);
   if (v0 == -1 && PyErr_Occurred()) return -1;
   int v1 = add_one(arg0)

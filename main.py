@@ -95,7 +95,7 @@ class Jit:
             f"{cname(boxed(argtype))} arg{idx}"
             for idx, argtype in enumerate(self.argtypes)
         )
-        sig = f"{cname(self.restype)} {self.fptr.__name__}_wrapper({argtypes}) {{"
+        sig = f"{cname(boxed(self.restype))} {self.fptr.__name__}_wrapper({argtypes}) {{"
         result.append(sig)
         for line in self.code:
             result.append("  " + line)
